@@ -2,7 +2,9 @@ package br.com.apirest.apirest.services;
 
 import br.com.apirest.apirest.domain.Users;
 
-public interface UserService {
+import java.util.List;
 
+public interface UserService {
     Users findById(Integer id);
+    List<Users> findAll();
 }
