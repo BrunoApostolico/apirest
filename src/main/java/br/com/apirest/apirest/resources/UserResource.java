@@ -3,6 +3,8 @@ package br.com.apirest.apirest.resources;
 import br.com.apirest.apirest.domain.dto.UserDTO;
 import br.com.apirest.apirest.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +24,11 @@ public class UserResource {
     @Autowired
     private UserService service;
 
+    private static final Logger LOG = LoggerFactory.getLogger(UserResource.class);
+
     @GetMapping(value = ID)
     public ResponseEntity<UserDTO> findById(@PathVariable Integer id) {
+        LOG.info("Teste log");
         return ResponseEntity.ok().body(mapper.map(service.findById(id),UserDTO.class));
     }
 
